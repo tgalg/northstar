@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { InventoryService } from './inventory.service';
 import { CreateInventoryDto } from './dto/create-inventory.dto';
 import { UpdateInventoryDto } from './dto/update-inventory.dto';
+import { PaginationDto } from 'src/shared/dtos/pagination.dto';
 
 @Controller('inventory')
 export class InventoryController {
@@ -21,8 +23,8 @@ export class InventoryController {
   }
 
   @Get()
-  async findAll() {
-    return this.inventoryService.findAll();
+  async findAll(@Query() paginationDto: PaginationDto) {
+    return this.inventoryService.findAll(paginationDto);
   }
 
   @Get(':id')

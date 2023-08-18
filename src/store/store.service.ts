@@ -4,6 +4,7 @@ import { UpdateStoreDto } from './dto/update-store.dto';
 import { Store } from './entities/store.entity';
 import { EntityManager, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PaginationDto } from 'src/shared/dtos/pagination.dto';
 
 @Injectable()
 export class StoreService {
@@ -18,8 +19,27 @@ export class StoreService {
     await this.entityManager.save(store);
   }
 
-  async findAll() {
-    return this.storeRepository.find();
+  async findAll(paginationDto: PaginationDto) {
+    const { page = 1, perPage = 10 } = paginationDto;
+
+    const skip = (page - 1) * perPage;
+    const take = perPage;
+
+    return this.storeRepository
+      .findAndCount({
+        skip,
+        take,
+      })
+      .then(([result, total]) => {
+        return {
+          pagination: {
+            page,
+            perPage,
+            total,
+          },
+          result,
+        };
+      });
   }
 
   async findOne(id: number) {
