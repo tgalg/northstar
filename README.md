@@ -77,3 +77,10 @@ npm run test
 
 Load Testing
 To evaluate the API's performance, use the provided load testing script.
+
+## System Design
+
+
+
+![sandbox drawio (1)](https://github.com/tgalg/northstar/assets/12563121/3392ca5c-c4e2-40e4-8edb-12e139bd051b)
+
