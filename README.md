@@ -1,69 +1,79 @@
-## NestJS take-home Boilerplate
+# NorthStar Candy Store API
 
-The idea of this repository is to have a boilerplate to take as reference for a NestJS API. 
-You're free to use it as you want.
-If you have any question, please contact me at hung.do@traderinteractive.com
+Welcome to the NorthStar Candy Store API! This API serves as the backend data interaction platform for consumers, candy products, stores, and order management.
 
-## Description
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+3. [Features](#features)
+4. [Endpoints](#endpoints)
+5. [Authentication](#authentication)
+6. [Testing](#testing)
+7. [Contact](#contact)
 
-Within this project you'll find an example of : 
+## Introduction
+NorthStar Candy Store API aims to provide a seamless online ordering experience for candy enthusiasts across the country. Developed using NestJS and TypeScript, the API ensures type-safety and scalability, catering to the potential growth of NorthStar's candy business.
 
-- Single endpoint to list a users
-- Unit testing for Controller and Service
-- E2E testing for the endpoint
-- Typeorm configuration
-- Repository pattern
+## Getting Started
 
-## Stack
+### Prerequisites
 
-- NestJS - NodeJs (TypeScript)
-- Typeorm - ORM
-- MariaDB - Database
-- Jest + Supertest - Testing
-- Yarn
+- Node.js
+- MySQL
 
+### Installation
 
-## Requirements
-- NodeJS >= 18.14.0
-- Yarn >= 1.22.17
+1. Clone the repository:
+```bash
+git clone https://github.com/[Your_GitHub_Username]/northstar-candy-store-api.git
+```
 
-## Steps to run this project using local environment:
+Install the dependencies:
+```bash
+cd northstar-candy-store-api
+npm install
+```
+Setup environment variables:
+```bash
+cp .env.example .env
+```
 
-1. Run `yarn install` command
-2. Copy `.env.example` to `.env` and fill the variables
-3. Run `yarn run start` command
+Edit .env with your database credentials.
 
+Run the migrations:
+```bash
+npm run migration:run
+```
 
-## Commands to run locally
+Start the server: 
+```bash
+npm start
+```
 
-You'll find the following commands in the `package.json` file:
+### Features
+- Customer Management: Register and update customer details.
+- Inventory Management: Handle candy product inventories.
+- Store Management: Register and manage NorthStar candy store outlets.
+- Order Management: Accept and manage candy orders.
+- JWT Authentication: Secure API endpoints.
+- Pagination: Efficiently handle large sets of data.
+- Reporting: Monthly reports for orders, grouped by store and status.
+  
+### Endpoints
+Refer to the provided API documentation (replace with the link to your documentation, if any) for a detailed list of endpoints and their respective functionalities.
 
-### API
+### Authentication
+The API uses JWT for authentication. To access protected routes, you need to pass the JWT token in the Authorization header:
+
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+## Testing
+### Unit Testing
+Run the following command to execute unit tests:
 
 ```bash
-
-# Start development API
-$ yarn run start:dev
-
-# Build API
-$ yarn run build
-
-# Start production API
-$ yarn run start:prod
-
+npm run test
 ```
-### Testing
 
-```bash
-# Run unit tests
-$ yarn run test
-
-# Run specific unit test file
-$ yarn run test -- users.controller.spec.ts
-
-# Run e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
+Load Testing
+To evaluate the API's performance, use the provided load testing script.
